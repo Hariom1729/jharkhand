@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trip Planner & Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <div class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><path d="M12.57 2.43A14.5 14.5 0 0 1 21.5 14.2c0 8.07-10.09 9.38-11.23 2.16a12.5 12.5 0 0 1 10.46-15.06Z"/><path d="M12.57 2.43A14.5 14.5 0 0 0 3.5 14.2c0 8.07 10.09 9.38 11.23 2.16A12.5 12.5 0 0 0 4.27 1.11Z"/><path d="M17.43 1.27A12.5 12.5 0 0 1 23 11.55c0 8.07-10.09 9.38-11.23 2.16a14.5 14.5 0 0 1 9.4-14.61Z"/><path d="m5.27 1.4-1.2 2.8"/><path d="m18.47 1.02 1.6 2.5"/><path d="M9.4 1.45 8.2 4.25"/></svg>
+                Jharkhand tourism 
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Your Personal Trip Planner</h1>
+            <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">Craft your perfect journey and get instant answers with our multilingual travel assistant.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left Panel: Itinerary Form -->
+            <aside class="lg:col-span-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-200 h-fit">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2 text-blue-500"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12a10 10 0 0 0-9.94 10A10 10 0 0 0 12 12z"/></svg>
+                    Plan Your Dream Trip
+                </h2>
+                <form id="itinerary-form" class="space-y-4">
+                    <div>
+                        <label for="destination" class="block text-sm font-medium text-gray-700">Destination</label>
+                        <input type="text" id="destination" name="destination" class="mt-1 block w-full bg-gray-50 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Jharkhand ,Ranchi" required>
+                    </div>
+                    <div>
+                        <label for="duration" class="block text-sm font-medium text-gray-700">Duration (in days)</label>
+                        <input type="number" id="duration" name="duration" min="1" max="30" class="mt-1 block w-full bg-gray-50 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 7" required>
+                    </div>
+                    <div>
+                        <label for="interests" class="block text-sm font-medium text-gray-700">Interests & Activities</label>
+                        <input type="text" id="interests" name="interests" class="mt-1 block w-full bg-gray-50 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., history, hiking, local food">
+                    </div>
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-700">Budget</label>
+                        <select id="budget" name="budget" class="mt-1 block w-full bg-gray-50 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option>Budget-friendly</option>
+                            <option selected>Mid-range</option>
+                            <option>Luxury</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="generate-btn" class="w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 flex items-center justify-center transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><path d="M17.5 12h-15m5.4-4.8L2.5 12l5.4 4.8"/><path d="M21.5 5.2v13.6"/></svg>
+                        Generate Itinerary
+                    </button>
+                </form>
+            </aside>
+
+            <!-- Right Panel: Itinerary Display -->
+            <main class="lg:col-span-8">
+                <div id="itinerary-display" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 min-h-[60vh]">
+                    <div id="placeholder" class="text-center flex flex-col items-center justify-center h-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-20 h-20 text-gray-300 mb-4"><path d="M12.57 2.43A14.5 14.5 0 0 1 21.5 14.2c0 8.07-10.09 9.38-11.23 2.16a12.5 12.5 0 0 1 10.46-15.06Z"/><path d="M12.57 2.43A14.5 14.5 0 0 0 3.5 14.2c0 8.07 10.09 9.38 11.23 2.16A12.5 12.5 0 0 0 4.27 1.11Z"/><path d="M17.43 1.27A12.5 12.5 0 0 1 23 11.55c0 8.07-10.09 9.38-11.23 2.16a14.5 14.5 0 0 1 9.4-14.61Z"/></svg>
+                        <h3 class="text-xl font-semibold text-gray-700">Your Personalized Itinerary is waiting for your trips </h3>
+                        <p class="text-gray-500 mt-1">Fill out the details on the left to get started!</p>
+                    </div>
+                    <div id="loading" class="hidden text-center">
+                         <div class="flex justify-center items-center h-full">
+                            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                            <p class="ml-4 text-gray-600 font-medium">Crafting your perfect trip...</p>
+                        </div>
+                    </div>
+                    <div id="error" class="hidden bg-red-100 border border-red-300 text-red-800 p-4 rounded-lg">
+                        <p><strong class="font-semibold">Oops!</strong> Something went wrong. Please try generating the itinerary again.</p>
+                        <p id="error-message" class="text-sm mt-1"></p>
+                    </div>
+                    <div id="itinerary-result" class="hidden">
+                        <!-- Itinerary and download button will be injected here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chat-toggle" class="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+    </button>
+    
+    <!-- Chatbot Window -->
+    <div id="chat-widget" class="fixed bottom-24 right-6 w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 hidden flex-col transition-all duration-300 transform origin-bottom-right">
+        <div class="bg-blue-600 text-white p-4 rounded-t-2xl flex justify-between items-center">
+            <h3 class="font-semibold text-lg">Travel Assistant</h3>
+            <button id="chat-close" class="text-white hover:text-gray-200">&times;</button>
+        </div>
+        <div id="chat-container" class="flex-1 p-4 overflow-y-auto chat-container">
+            <!-- Chat messages will appear here -->
+             <div class="flex items-start gap-2.5 mb-4">
+                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-600"><path d="M12.57 2.43A14.5 14.5 0 0 1 21.5 14.2c0 8.07-10.09 9.38-11.23 2.16a12.5 12.5 0 0 1 10.46-15.06Z"/><path d="M12.57 2.43A14.5 14.5 0 0 0 3.5 14.2c0 8.07 10.09 9.38 11.23 2.16A12.5 12.5 0 0 0 4.27 1.11Z"/></svg>
+                </div>
+                <div class="flex flex-col gap-1 w-full max-w-[320px]">
+                    <div class="leading-1.5 p-3 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl">
+                        <p class="text-sm font-normal text-gray-900">Hello! How can I help you today? Ask me anything about your trip or general travel questions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="chat-loading" class="px-4 pb-2 text-sm text-gray-500 hidden">
+            <span class="italic">Assistant is typing...</span>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+            <form id="chat-form" class="flex items-center">
+                <input type="text" id="chat-input" class="w-full bg-gray-100 border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500" placeholder="Ask a question..." autocomplete="off">
+                <button type="submit" class="ml-3 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

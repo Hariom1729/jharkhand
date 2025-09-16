@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jharkhand Tourism - A New Era of Exploration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles can be added here if needed */
+        body {
+            background-color: #f7fafc;
+        }
+
+        /* The container that crops the moving text */
+
+/* The text that will be animated */
+.marquee-text {
+  color: rgb(50, 148, 4);
+  display: inline-block; /* Allows the element to be transformed */
+  white-space: nowrap; /* Keeps the text on a single line */
+  padding-left: 100%; /* Starts the text just outside the right edge of the container */
+  margin-bottom: 20px;
+  font-size: 25px;
+  
+  /* Applying the animation */
+  animation: scroll-left 20s linear infinite;
+}
+
+/* Pause the animation on hover for better user experience */
+.marquee-container:hover .marquee-text {
+  animation-play-state: paused;
+}
+
+/* Keyframes define the animation sequence */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%); /* Moves the text to the left by its own width */
+  }
+}
+        /* The hero-bg class is no longer needed for the video background */
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">JharkhandConnect</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#tourist" class="text-gray-600 hover:text-green-600">For Tourists</a>
+                <a href="#community" class="text-gray-600 hover:text-green-600">For Community</a>
+                <a href="#heritage" class="text-gray-600 hover:text-green-600">For Heritage</a>
+                <a href="#governance" class="text-gray-600 hover:text-green-600">For Governance</a>
+                <a href="#comparison" class="text-gray-600 hover:text-green-600">Comparison</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden px-6 pt-2 pb-4 space-y-2 bg-white">
+            <a href="#tourist" class="block text-gray-600 hover:text-green-600">For Tourists</a>
+            <a href="#community" class="block text-gray-600 hover:text-green-600">For Community</a>
+            <a href="#heritage" class="block text-gray-600 hover:text-green-600">For Heritage</a>
+            <a href="#governance" class="block text-gray-600 hover:text-green-600">For Governance</a>
+            <a href="#comparison" class="block text-gray-600 hover:text-green-600">Comparison</a>
+        </div>
+    </nav>
+
+    <header class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+        <video autoplay loop muted playsinline class="absolute z-0 w-full h-full object-cover">
+            <source src="A Drone Trip of Jharkhand   Travel Guide   4K l Nature l People l Culture l Our Jharkhand l.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+
+        <div class="relative z-20 text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Discover the Soul of Jharkhand</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">An AI-powered platform uniting tourists, local communities, and heritage for a sustainable and immersive travel experience.</p>
+            <a href="#tourist" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">Start Your Journey</a>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-16">
+
+        <section id="tourist" class="mb-20">
+         <div class="marquee-container">
+            <p class="marquee-text">This is your scrolling text. Add as much content as you want here! It will scroll smoothly across the screen.</p>
+          </div>
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">A Seamless & Immersive Journey for Tourists ✈️</h2>
+            <p class="text-center text-gray-600 mb-12">Experience Jharkhand like never before with cutting-edge technology at your fingertips.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-robot text-4xl text-green-600 mb-4"></i>
+                    <h3 id="aiPersonalization" class="text-xl font-semibold mb-2 cursor-pointer">
+                    AI-Powered Personalization
+                    </h3>
+                    <iframe
+                    id="aiFrame"
+                    src=""
+                    class="hidden w-full h-[90vh] border-0 rounded-xl shadow-lg mt-4"
+                    ></iframe>
+                    <p class="text-gray-600">From AI-driven planning to a voice-embedded multilingual chatbot, your trip is tailored perfectly to you.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-vr-cardboard text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Immersive Experience</h3>
+                    <p class="text-gray-600">Break language barriers with a real-time translator, navigate with interactive maps, and preview destinations with AR/VR.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-shield-alt text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Convenience & Safety</h3>
+                    <p class="text-gray-600">Use a universal QR code for payments and access, and stay informed with real-time updates on weather, crowds, and transport.</p>
+                </div>
+            </div>
+        </section>
+<hr/>
+        <section id="community" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Empowerment & Economic Growth for the Local Community 🤝</h2>
+            <p class="text-center text-gray-600 mb-12">Creating opportunities and fostering sustainable growth from the ground up.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-store text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Digital Marketplace</h3>
+                    <p class="text-gray-600">An integrated hub showcasing tribal handicrafts, local decor, and eco-tourism services directly to a global audience.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-cubes text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Trust & Verification</h3>
+                    <p class="text-gray-600">Blockchain technology builds credibility through verified product authenticity and secure, transparent payments.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-hand-holding-usd text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Financial Inclusion</h3>
+                    <p class="text-gray-600">Fostering entrepreneurship by connecting local artisans and service providers with banks for loans and insurance.</p>
+                </div>
+            </div>
+        </section>
+<hr/>
+        <section id="heritage" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Promotion & Preservation of Jharkhand's Heritage 🏛️</h2>
+            <p class="text-center text-gray-600 mb-12">Celebrating and safeguarding the rich cultural tapestry of the state for future generations.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-paint-brush text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Cultural Showcase</h3>
+                    <p class="text-gray-600">Promoting local music, arts, indigenous games, and cultural narratives through our dynamic platform.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-book-open text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Digital Knowledge Hub</h3>
+                    <p class="text-gray-600">An educational section rich with media, articles, and research materials about Jharkhand's history and traditions.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-trophy text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Gamified Engagement</h3>
+                    <p class="text-gray-600">Reward-based challenges and events that encourage tourists to explore deeper and engage with local culture.</p>
+                </div>
+            </div>
+        </section>
+<hr/>
+        <section id="governance" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Data-Driven & Sustainable Management for Governance 📊</h2>
+            <p class="text-center text-gray-600 mb-12">Utilizing technology for smarter, more efficient, and sustainable tourism management.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-chart-line text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
+                    <p class="text-gray-600">Access actionable insights on tourism trends, footfall, and economic impact for better infrastructure planning.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-brain text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">AI-Driven Improvement</h3>
+                    <p class="text-gray-600">AI-powered sentiment analysis on feedback helps to rapidly identify issues and enhance the tourist experience.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-leaf text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Sustainable Practices</h3>
+                    <p class="text-gray-600">Integrates smart waste management systems and promotes eco-friendly policies for clean, responsible tourism.</p>
+                </div>
+            </div>
+        </section>
+<hr/>
+        <section id="comparison" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">The Evolution of Tourism</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="w-full md:w-1/2 bg-white p-6 rounded-lg border-2 border-red-200">
+                    <h3 class="text-2xl font-bold text-red-600 mb-4 text-center">Traditional Model</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><i class="fas fa-times-circle text-red-500 mr-2"></i>Manual, generic planning</li>
+                        <li><i class="fas fa-times-circle text-red-500 mr-2"></i>Language & navigation barriers</li>
+                        <li><i class="fas fa-times-circle text-red-500 mr-2"></i>Fragmented payment systems</li>
+                        <li><i class="fas fa-times-circle text-red-500 mr-2"></i>Limited market access for locals</li>
+                        <li><i class="fas fa-times-circle text-red-500 mr-2"></i>Lack of trust in local products</li>
+                        <li><i class="fas fa-times-circle text-red-500 mr-2"></i>Reactive governance based on old data</li>
+                        <li><i class="fas fa-times-circle text-red-500 mr-2"></i>Static, passive cultural promotion</li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2 bg-white p-6 rounded-lg border-2 border-green-200">
+                    <h3 class="text-2xl font-bold text-green-600 mb-4 text-center">Our AI-Powered Model</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><i class="fas fa-check-circle text-green-500 mr-2"></i>AI-personalized, dynamic itineraries</li>
+                        <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Real-time translation & AR navigation</li>
+                        <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Universal QR for seamless transactions</li>
+                        <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Global digital marketplace for artisans</li>
+                        <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Blockchain for verified authenticity</li>
+                        <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Proactive governance with real-time analytics</li>
+                        <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Interactive, gamified cultural engagement</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 JharkhandConnect. All Rights Reserved.</p>
+            <p>Innovating Tourism, Empowering Communities.</p>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-5 right-5 z-40">
+        <button class="bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition duration-300">
+            <i class="fas fa-comments text-2xl"></i>
+        </button>
+    </div>
+
+    <script src="script1.js"></script>
+</body>
+</html>
