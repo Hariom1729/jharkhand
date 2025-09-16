@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS styles go here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .marketplace-container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .marketplace-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .marketplace-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #f97316; /* Orange */
+            border-radius: 2px;
+        }
+
+        .marketplace-header p {
+            color: #6c757d;
+            margin-top: 25px;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tabs button {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: #6c757d;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .tabs button.active {
+            background-color: #f97316;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 160px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Background colors for different cards */
+        .bg-sohrai { background-color: #c3844f; }
+        .bg-bamboo { background-color: #61d095; }
+        .bg-jewelry { background-color: #6b95f2; }
+        .bg-textiles { background-color: #e6628f; }
+
+        .card-image img {
+            width: 50px;
+            height: 50px;
+            opacity: 0.8;
+        }
+
+        .product-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+        
+        .price-range {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+
+        .price-range .price-from {
+            color: #d9534f; /* Reddish tone */
+        }
+        
+        .price-range .price-to {
+            color: #6c757d; /* Gray */
+        }
+        
+        .card-origin {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f97316;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #ea580c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="marketplace-container">
+        <div class="marketplace-header">
+            <h2>Local Marketplace</h2>
+            <p>Support local communities by purchasing authentic products and booking local services</p>
+        </div>
+
+        <nav class="tabs">
+            <button class="active">Tribal Handicrafts</button>
+            <button>Homestays</button>
+            <button>Experiences</button>
+            <button>Cultural Events</button>
+        </nav>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="card-image bg-sohrai">
+                    <img src="https://i.ibb.co/L5hYh8S/tribal-icon.png" alt="Tribal Art Icon">
+                </div>
+                <h3>Sohrai Painting</h3>
+                <p class="price-range">
+                    <span class="price-from">₹1,200</span>
+                    <span class="price-to"> - ₹3,500</span>
+                </p>
+                <p class="card-origin">By Tribal Artists, Hazaribagh</p>
+                <button class="cta-button">CONTACT ARTISAN</button>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image bg-bamboo">
+                    <img src="https://i.ibb.co/L5hYh8S/tribal-icon.png" alt="Tribal Art Icon">
+                </div>
+                <h3>Bamboo Handicrafts</h3>
+                <p class="price-range">
+                    <span class="price-from">₹300</span>
+                    <span class="price-to"> - ₹2,000</span>
+                </p>
+                <p class="card-origin">Tribal Weavers, Dumka</p>
+                <button class="cta-button">VIEW COLLECTION</button>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image bg-jewelry">
+                    <img src="https://i.ibb.co/L5hYh8S/tribal-icon.png" alt="Tribal Art Icon">
+                </div>
+                <h3>Tribal Jewelry</h3>
+                <p class="price-range">
+                    <span class="price-from">₹800</span>
+                    <span class="price-to"> - ₹5,000</span>
+                </p>
+                <p class="card-origin">Local Silversmiths, Ranchi</p>
+                <button class="cta-button">EXPLORE DESIGNS</button>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image bg-textiles">
+                    <img src="https://i.ibb.co/L5hYh8S/tribal-icon.png" alt="Tribal Art Icon">
+                </div>
+                <h3>Handwoven Textiles</h3>
+                <p class="price-range">
+                    <span class="price-from">₹1,500</span>
+                    <span class="price-to"> - ₹4,000</span>
+                </p>
+                <p class="card-origin">Women's Cooperative, Gumla</p>
+                <button class="cta-button">EXPLORE PRODUCTS</button> </div>
+        </div>
+    </div>
+
+</body>
+</html>

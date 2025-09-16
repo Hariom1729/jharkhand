@@ -10,3 +10,10 @@ const heading = document.getElementById("aiPersonalization");
   heading.addEventListener("click", () => {
    window.open("src/inde.html", "_blank");  // show/hide toggle
   });
+
+  const head = document.getElementById("marketplace");
+  const fram = document.getElementById("aiFrame");
+
+  heading.addEventListener("click", () => {
+   window.open("src/market.html", "_blank");  // show/hide toggle
+  });
